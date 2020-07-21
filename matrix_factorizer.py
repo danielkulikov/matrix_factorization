@@ -238,37 +238,5 @@ if __name__ == "__main__":
                 mf.train()
                 model = mf.get_model()
                 
-                # evaluate model
-    
-                r = np.zeros(rating_matrix.shape[1])
-                p,q = mf.get_model()
-    
-                for j in range(rating_matrix.shape[1]):
-                    r[j] = np.dot(p[0, :], q[j,:].T)
-                    
-                x = rating_matrix[0, :]
-                t1 = r[np.argsort(r)][-50:]
-                t2 = x[np.argsort(x)][-50:]
-                
-                inter = np.size(np.intersect1d(t1, t2))
-                cross_validation_results[s,t,u] = inter
-                print(inter)
-
-    # import spotify dataset
-   
-    #song_data = np.genfromtxt('C:/Users/Daniel/Documents/GitHub/matrix_factorization/spotify_dataset.csv', delimiter=',', encoding="utf8", skip_header=1)
-    
-    #song_title_to_id, indexed_song_data = np.unique(song_data, return_inverse=True)
-    # conver to ids
-    #song_data = pd.read_csv('C:/Users/Daniel/Documents/GitHub/matrix_factorization/spotify_dataset.csv', nrows=100000, error_bad_lines=False)
-    
-    #song_data = song_data.to_numpy()
-    # take only a fraction of the dataset (lets say 100k songs and 2k playlists)
-    
-    
-    
-    ##
-    
-    
     
     
