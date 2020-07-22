@@ -1,23 +1,15 @@
-README
-Spotify playlists dataset
+# matrix_factorization
 
+homebrew implementations of matrix factorization for recommender systems, both for explicit feedback (trained with stochastic gradient descent) and implicit feedback (trained with alternating least squares). 
 
-This dataset is based on the subset of users in the #nowplaying dataset who publish their #nowplaying tweets via Spotify. In principle, the dataset holds users, their playlists and the tracks contained in these playlists. 
+## Usage
 
-The csv-file holding the dataset contains the following columns: 
-"user_id", "artistname", "trackname", "playlistname"
-, where
-- user_id is a hash of the user's Spotify user name
-- artistname is the name of the artist
-- trackname is the title of the track and
-- playlistname is the name of the playlist that contains this track.
-
-The separator used is , each entry is enclosed by double quotes and the escape character used is \.
-
-
-
-A description of the generation of the dataset and the dataset itself can be found in the following paper:
-
-Pichl, Martin; Zangerle, Eva; Specht, Günther: "Towards a Context-Aware Music Recommendation Approach: What is Hidden in the Playlist Name?" in 15th IEEE International Conference on Data Mining Workshops (ICDM 2015), pp. 1360-1365, IEEE, Atlantic City, 2015.
-
+```python
+# create a matrix_factorizer object with the user-item rating matrix and some other arguments - choose either implicit or explicit feedback type. 
+mf = matrix_factorizer(rating_matrix, params, dim, "implicit", i_matrix)
+# trains the model 
+mf.train()
+# returns the user-feature and item-feature trained parameters. 
+model = mf.get_model()
+```
 
